@@ -3,7 +3,23 @@ Getting and Cleaning Data Project
 
 Project for getdata-002 on Coursera.
 
-1. Download the Samsung Galaxy S smartphone accelerometer dataset from [here](https://d396qusza40orc.cloudfront.net/getdata%2Fprojectfiles%2FUCI%20HAR%20Dataset.zip).  Description of the data is [here](http://archive.ics.uci.edu/ml/datasets/Human+Activity+Recognition+Using+Smartphones).
-2. Unzip the dataset such that there is a directory named "UCI HAR Dataset" within your working directory.
-3. Execute run_analysis.R.
-4. Enjoy.
+Original instructions:
+You should create one R script called run_analysis.R that does the following. 
+* Merges the training and the test sets to create one data set.
+* Extracts only the measurements on the mean and standard deviation for each measurement. 
+* Uses descriptive activity names to name the activities in the data set
+* Appropriately labels the data set with descriptive activity names. 
+* Creates a second, independent tidy data set with the average of each variable for each activity and each subject. 
+
+The included run_analysis.R will execute the following steps:
+1. download the UCI HAR Dataset into ./data
+2. expand the compressed dataset
+3. load the label codes key from activity_labels.txt
+4. load the feature key from features.txt
+5. determine the indices of desired features (those containing -mean() or -std())
+6. load the training and test data sets and only retain data columns determined by indices from step #5
+7. merge the training and test data sets
+8. replace label codes in the dataset with text labels determined by step #3
+9. reshape data to use label and subject as identifiers
+10. produce a tidy data set (HARUSD_means.txt) with the average of each variable for each activity/subject combination
+11. produce CodeBook.md with a list of column names (which were taken from features.txt)
