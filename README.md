@@ -1,9 +1,8 @@
 Getting and Cleaning Data Project
 ===========
-
 Project for getdata-002 on Coursera.
 
-Original instructions:
+# Original instructions:
 You should create one R script called run_analysis.R that does the following. 
 * Merges the training and the test sets to create one data set.
 * Extracts only the measurements on the mean and standard deviation for each measurement. 
@@ -11,7 +10,7 @@ You should create one R script called run_analysis.R that does the following.
 * Appropriately labels the data set with descriptive activity names. 
 * Creates a second, independent tidy data set with the average of each variable for each activity and each subject. 
 
-The included run_analysis.R will execute the following steps:
+# Steps in run_analysis.R:
 1. download the UCI HAR Dataset into ./data
 2. expand the compressed dataset
 3. load the label codes key from activity_labels.txt
@@ -23,3 +22,6 @@ The included run_analysis.R will execute the following steps:
 9. reshape data to use label and subject as identifiers
 10. produce a tidy data set (HARUSD_means.txt) with the average of each variable for each activity/subject combination
 11. produce CodeBook.md with a list of column names (which were taken from features.txt)
+
+# Notes:
+* For descriptions of data types and how data was collected, check these files included with the original data: README.txt, features_info.txt

@@ -14,7 +14,7 @@ dateDownloaded
 
 ## import labels
 labels <- read.table(paste("data", data_dir, "activity_labels.txt", sep="/"), 
-                     col.names=c("code","label"))
+                     col.names=c("labelcode","label"))
 
 ## import features
 features <- read.table(paste("data", data_dir, "features.txt", sep="/"))
@@ -47,7 +47,7 @@ dftest = cbind(test_labels, test_subject, test_data)
 df <- rbind(dftraining, dftest)
 
 ## replace label codes with the label
-df = merge(labels, df, by.x="code", by.y="labelcode")
+df = merge(labels, df, by.x="labelcode", by.y="labelcode")
 df <- df[,-1]
 
 ## reshape the array
@@ -59,8 +59,8 @@ molten <- melt(df, id = c("label", "subject"))
 tidy <- dcast(molten, label + subject ~ variable, mean)
 
 ## write tidy dataset to disk
-write.table(tidy, file="HARUSD_means.txt", quote=FALSE, row.names=FALSE, sep="/t")
+write.table(tidy, file="HARUSD_means.txt", quote=FALSE, row.names=FALSE, sep="\t")
 
 ## write codebook to disk
 write.table(paste("* ", names(tidy), sep=""), file="CodeBook.md", quote=FALSE,
-            row.names=FALSE, col.names=FALSE, sep="/t")
+            row.names=FALSE, col.names=FALSE, sep="\t")
